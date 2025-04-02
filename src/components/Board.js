@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Square from "./Square";
 import { Grid, Typography, Button } from "@mui/material";
 
-const Board = ({ size, winCondition,player, resetGame }) => {
-    
+const Board = ({ size, winCondition, player, resetGame }) => {
   const [board, setBoard] = useState(Array(size * size).fill(null));
   const [currentPlayer, setCurrentPlayer] = useState(1);
   const [winner, setWinner] = useState(null);
@@ -74,13 +73,17 @@ const Board = ({ size, winCondition,player, resetGame }) => {
   };
 
   return (
-    <div>
+    <>
       <Typography variant="h5">Current Player: {currentPlayer}</Typography>
       <Grid
         container
         spacing={0}
         direction="row"
-        sx={{ display: "flex", justifyContent: "center" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          width: 64 * size + 20,
+        }}
       >
         {Array.from({ length: size }).map((_, rowIndex) => (
           <Grid container size={12} justifyContent="center" key={rowIndex}>
@@ -98,7 +101,7 @@ const Board = ({ size, winCondition,player, resetGame }) => {
       >
         Reset Game
       </Button>
-    </div>
+    </>
   );
 };
 

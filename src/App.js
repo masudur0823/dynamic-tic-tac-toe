@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Container, Stack, TextField, Typography } from "@mui/material";
+import { Box, Container, Stack, TextField, Typography } from "@mui/material";
 import Board from "./components/Board";
 
 function App() {
   const [size, setSize] = useState(5);
   const [winCell, setWinCell] = useState(4);
-  const [player, setPlayer] = useState(2);
+  const [player, setPlayer] = useState(3);
   const [gameKey, setGameKey] = useState(0); // To reset the board when needed
 
   const resetGame = () => {
@@ -32,7 +32,7 @@ function App() {
           value={winCell}
           onChange={(e) => setWinCell(e.target.value)}
         />
-         <TextField
+        <TextField
           type="number"
           size="small"
           label="Total Player"
@@ -44,13 +44,15 @@ function App() {
       {!size || size < 3 ? (
         <Typography>Please select Size value geater than 3</Typography>
       ) : (
-        <Board
-          key={gameKey}
-          size={Number(size)}
-          winCondition={Number(winCell)}
-          player={Number(player)}
-          resetGame={resetGame}
-        />
+        
+          <Board
+            key={gameKey}
+            size={Number(size)}
+            winCondition={Number(winCell)}
+            player={Number(player)}
+            resetGame={resetGame}
+          />
+      
       )}
     </Container>
   );
